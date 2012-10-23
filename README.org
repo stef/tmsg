@@ -15,7 +15,7 @@ HiddenServiceDir /var/lib/tor/tmsg/
 HiddenServicePort 80 127.0.0.1:14444
 #+END_EXAMPLE
 
-after restarting tor or using torpy (https://github.com/stef/torpy):
+after restarting tor or using torpy [https://github.com/stef/torpy]:
 #+BEGIN_EXAMPLE
 torpy start tmsg 127.0.0.1:14444 80
 #+END_EXAMPLE
