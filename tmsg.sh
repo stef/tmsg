@@ -1,4 +1,11 @@
 #!/usr/bin/ksh
+# (c) 2012 s@ctrlc.hu
+#
+#  This is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 3 of the License, or
+#  (at your option) any later version.
+#
 ## simple multiparty chat and file sharing via tor and ecc for auth.
 ## depends on socat, seccure, ksh
 ##
