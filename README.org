@@ -100,3 +100,7 @@ after some tor specific delay in the tmsg terminal:
 2012-10-23T22:44:50.717327580+0200 <self> hello world
 ^C
 #+END_EXAMPLE
+
+** TODO
+ - support file uploads
+ - use ephemeral signing keys
