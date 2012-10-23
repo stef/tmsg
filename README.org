@@ -101,6 +101,6 @@ after some tor specific delay in the tmsg terminal:
 ^C
 #+END_EXAMPLE
 
-** TODO
+** Wishlist
  - support file uploads
  - use ephemeral signing keys
