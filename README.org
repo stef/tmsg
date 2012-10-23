@@ -8,7 +8,7 @@ displayed. Incoming messages are automatically truncated at 4KB.
 
 depends on socat, seccure, ksh
 
-** Set up tor hidden service
+** set up tor hidden service
 start a hidden service like this in /etc/tor/torrc:
 #+BEGIN_EXAMPLE
 HiddenServiceDir /var/lib/tor/tmsg/
@@ -69,7 +69,7 @@ example send to multiple peers:
 echo "immanentize the eschaton" | ./tsend.sh self hugo angela vlad kim
 #+END_EXAMPLE
 
-** Complete example
+** complete example
 #+BEGIN_EXAMPLE
 % git clone git://github.com/stef/tmsg.git
 Cloning into 'tmsg'...
@@ -101,6 +101,6 @@ after some tor specific delay in the tmsg terminal:
 ^C
 #+END_EXAMPLE
 
-** Wishlist
+** wishlist
  - support file uploads
  - use ephemeral signing keys
