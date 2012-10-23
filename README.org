@@ -1,10 +1,10 @@
 * tmsg
-Simple multiparty chat and file sharing via tor and ecc for
-auth. Receiving peers run tmsg hidden services which handle incoming
-messages. If an incoming message starts with an line signed by a peer
-the rest of the message will be also verified against this peers
-public key and if this succeeds, the message is displayed. Incoming
-messages are automatically truncated at 4KB.
+Simple, decentralized multiparty chat and file sharing via tor and ecc
+for auth. Receiving peers run tmsg hidden services which handle
+incoming messages. If an incoming message starts with an line signed
+by a peer the rest of the message will be also verified against this
+peers public key and if this succeeds, the message is
+displayed. Incoming messages are automatically truncated at 4KB.
 
 depends on socat, seccure, ksh
 
