@@ -29,6 +29,9 @@
 ## twospaces before public key necessary, but no onion address
 # poster  <pseudonym public key>
 ## etc.
+##
+## If you want to run tmsg on multiple onion addresses, you can change
+## the local port like this: localport=14445 ./tmsg.sh
 
 cfgdir=.
 
