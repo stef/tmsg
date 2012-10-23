@@ -1,5 +1,10 @@
 * tmsg
-Simple multiparty chat and file sharing via tor and ecc for auth.
+Simple multiparty chat and file sharing via tor and ecc for
+auth. Receiving peers run tmsg hidden services which handle incoming
+messages. If an incoming message starts with an line signed by a peer
+the rest of the message will be also verified against this peers
+public key and if this succeeds, the message is displayed. Incoming
+messages are automatically truncated at 4KB.
 
 depends on socat, seccure, ksh
 
@@ -34,11 +39,14 @@ myself myaddress.onion <my public key>
 friend 3m3k8x....onion <friends public key>
 mom 8xj8nj38x....onion <moms public key>
 myself2 my2ndaddress.onion <my other public key>
-# trailing space but no key, for read only address
-mydeaddrop mydeadrop.onion 
-# twospaces before public key necessary, but no onion address
-poster  <pseudonym public key>
+#+END_EXAMPLE
+trailing space but no key, for read only address
 #+BEGIN_EXAMPLE
+mydeaddrop mydeadrop.onion 
+#+END_EXAMPLE
+twospaces before public key necessary, but no onion address
+#+BEGIN_EXAMPLE
+poster  <pseudonym public key>
 #+END_EXAMPLE
 
 ** multiple instances
@@ -77,7 +85,7 @@ zsh: suspended  ./tmsg.sh
 % sudo cat /var/lib/tor/muc/hostname
 [sudo] password for stef: 
 hvpd33rd4vhx4upd.onion
-% echo "self hvpd33rd4vhx4upd.onion:80 $Crmgt8UIjK|jzRP+UcpShH.7crWl6a0&=Dr<<)fl6|b:4}G70rycD$0Pov?X5(G-$pA?Iz:</(<|X6zL" >peers
+% echo 'self hvpd33rd4vhx4upd.onion:80 $Crmgt8UIjK|jzRP+UcpShH.7crWl6a0&=Dr<<)fl6|b:4}G70rycD$0Pov?X5(G-$pA?Iz:</(<|X6zL' >peers
 % fg
 [1]  + continued  ./tmsg.sh
 #+END_EXAMPLE
