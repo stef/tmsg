@@ -15,11 +15,6 @@ HiddenServiceDir /var/lib/tor/tmsg/
 HiddenServicePort 80 127.0.0.1:14444
 #+END_EXAMPLE
 
-after restarting tor or using https://github.com/stef/torpy
-#+BEGIN_EXAMPLE
-torpy start tmsg 127.0.0.1:14444 80
-#+END_EXAMPLE
-
 get your onion address from
 #+BEGIN_EXAMPLE
 sudo cat /var/lib/tor/tmsg/hostname
