@@ -1,0 +1,94 @@
+* tmsg
+Simple multiparty chat and file sharing via tor and ecc for auth.
+
+depends on socat, seccure, ksh
+
+** Set up tor hidden service
+start a hidden service like this in /etc/tor/torrc:
+#+BEGIN_EXAMPLE
+HiddenServiceDir /var/lib/tor/tmsg/
+HiddenServicePort 80 127.0.0.1:14444
+#+END_EXAMPLE
+
+after restarting tor or using torpy (https://github.com/stef/torpy):
+#+BEGIN_EXAMPLE
+torpy start tmsg 127.0.0.1:14444 80
+#+END_EXAMPLE
+
+get your onion address from
+#+BEGIN_EXAMPLE
+sudo cat /var/lib/tor/tmsg/hostname
+#+END_EXAMPLE
+
+This hostname together with the HiddenServicePort 80 from above and
+your public key from ./pub form your complete address that you can
+share with your friends so you can have a two-way conversation. If you
+only share your public key, then you will be able to send to people
+accepting your key. But you can only be contacted, if you shared your
+onion address with others.
+
+** peers
+create a list of all your peers data in this format
+#+BEGIN_EXAMPLE
+myself myaddress.onion <my public key>
+friend 3m3k8x....onion <friends public key>
+mom 8xj8nj38x....onion <moms public key>
+myself2 my2ndaddress.onion <my other public key>
+# trailing space but no key, for read only address
+mydeaddrop mydeadrop.onion 
+# twospaces before public key necessary, but no onion address
+poster  <pseudonym public key>
+#+BEGIN_EXAMPLE
+#+END_EXAMPLE
+
+** multiple instances
+You can run multiple tmsg instances in parallel, you just have to create more onion services, and run each tmsg in a separate directory
+You can change the local port for tmsg like this:
+#+BEGIN_EXAMPLE
+localport=14445 ./tmsg.sh
+#+END_EXAMPLE
+
+** sending
+example send to self (assuming you have a line with self and your
+onion address and public key in *peers*):
+#+BEGIN_EXAMPLE
+echo "snafu" | ./tsend.sh self
+#+END_EXAMPLE
+
+example send to multiple peers:
+
+#+BEGIN_EXAMPLE
+echo "immanentize the eschaton" | ./tsend.sh self hugo angela vlad kim
+#+END_EXAMPLE
+
+** Complete example
+#+BEGIN_EXAMPLE
+% git clone git://github.com/stef/tmsg.git
+Cloning into 'tmsg'...
+remote: Counting objects: 5, done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 5 (delta 0), reused 5 (delta 0)
+Receiving objects: 100% (5/5), done.
+% cd tmsg
+% ./tmsg.sh
+your public key is: $Crmgt8UIjK|jzRP+UcpShH.7crWl6a0&=Dr<<)fl6|b:4}G70rycD$0Pov?X5(G-$pA?Iz:</(<|X6zL
+don't forget to add your onion address to ./peers^Z
+zsh: suspended  ./tmsg.sh
+% sudo cat /var/lib/tor/muc/hostname
+[sudo] password for stef: 
+hvpd33rd4vhx4upd.onion
+% echo "self hvpd33rd4vhx4upd.onion:80 $Crmgt8UIjK|jzRP+UcpShH.7crWl6a0&=Dr<<)fl6|b:4}G70rycD$0Pov?X5(G-$pA?Iz:</(<|X6zL" >peers
+% fg
+[1]  + continued  ./tmsg.sh
+#+END_EXAMPLE
+
+Meanwhile in a different terminal (but the same directory):
+#+BEGIN_EXAMPLE
+% echo "hello world" | ./tsend.sh self
+#+END_EXAMPLE
+
+after some tor specific delay in the tmsg terminal:
+#+BEGIN_EXAMPLE
+2012-10-23T22:44:50.717327580+0200 <self> hello world
+^C
+#+END_EXAMPLE
