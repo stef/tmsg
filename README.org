@@ -82,7 +82,7 @@ Receiving objects: 100% (5/5), done.
 your public key is: $Crmgt8UIjK|jzRP+UcpShH.7crWl6a0&=Dr<<)fl6|b:4}G70rycD$0Pov?X5(G-$pA?Iz:</(<|X6zL
 don't forget to add your onion address to ./peers^Z
 zsh: suspended  ./tmsg.sh
-% sudo cat /var/lib/tor/muc/hostname
+% sudo cat /var/lib/tor/tmsg/hostname
 [sudo] password for stef: 
 hvpd33rd4vhx4upd.onion
 % echo 'self hvpd33rd4vhx4upd.onion:80 $Crmgt8UIjK|jzRP+UcpShH.7crWl6a0&=Dr<<)fl6|b:4}G70rycD$0Pov?X5(G-$pA?Iz:</(<|X6zL' >peers
