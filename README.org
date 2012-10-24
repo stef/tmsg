@@ -98,7 +98,7 @@ after some tor specific delay in the tmsg terminal:
 
 ** poor mans repl
 #+BEGIN_EXAMPLE
-while read line; do echo "$line" | ./tsend.sh rhapsodhy; done
+./tmsg.sh &; while read line; do echo "$line" | ./tsend.sh rhapsodhy; done
 #+END_EXAMPLE
 
 ** wishlist
