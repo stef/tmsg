@@ -96,6 +96,11 @@ after some tor specific delay in the tmsg terminal:
 ^C
 #+END_EXAMPLE
 
+** poor mans repl
+#+BEGIN_EXAMPLE
+while read line; do echo "$line" | ./tsend.sh rhapsodhy; done
+#+END_EXAMPLE
+
 ** wishlist
  - support file uploads
  - use ephemeral signing keys
